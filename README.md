@@ -54,8 +54,7 @@ Files
 - **[Firmware](firmware)**
 - **[Settings](settings)**
 - **[Wiring Schematic](OLSK_Large_Laser_V3_WiringSchematic.pdf)**
-- **[Settings](OLSK_Large_Laser.vcsettings)**
-
+  
 Author
 --
 
