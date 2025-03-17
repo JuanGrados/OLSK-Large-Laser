@@ -22,9 +22,28 @@ All OLSK machines are open source and have an assembly manual, the BOM and neces
 - **[Assembly Manual](https://open-lab-starter-kit.github.io/OLSK-Large-Laser/)**
 
 
-Specifications V1
+Specifications V3
 --
 
+- multilaser source compatibility: RF CO2 60W, RF CO2 40W, Diode 40W
+- automatic laser source management
+- tool changer with magnetic kinematic coupling heads
+- automatic focal length
+- spring loaded RF laser mount
+- beam expander
+- single point beam adjustment
+- custom optics mount
+- all-on-one Micro ATX controller
+- fully enclosed housing
+- mounted touch screen
+- LED status lights
+- dual 16 MP camera
+- software: OLOS V2
+- job preview
+- WiFi and Ethernet connection
+- integrated Gcode generation
+- AI image generator
+- camera positioning system
 
 <img src="media/OLSK_Large_Laser_V2_1.png" width="100%">
 
@@ -32,6 +51,8 @@ Files
 --
 
 - **[CAD](cad)**
+- **[Firmware](firmware)**
+- **[Settings](settings)**
 - **[Wiring Schematic](OLSK_Large_Laser_V3_WiringSchematic.pdf)**
 - **[Settings](OLSK_Large_Laser.vcsettings)**
 
@@ -71,3 +92,12 @@ Hardware design, CAD and PCB files, BOM, settings and other technical or design 
 Assembly manual, pictures, videos, presentations, description text and other type of media are released under the following license:
 
 - Creative-Commons-Attribution-ShareAlike 4.0 International - **[CC BY-SA 4.0](LICENSE_CC_BY_SA_4.0.txt)**
+
+  
+Previous version
+--
+
+Previous versions of OLSK machines will always be available. 
+
+**[OLSK Large Laser V1 Repository](OLSK_Large_Laser_V1)** 
+<div><img src="media/OLSK-Large-Laser.jpg" width="30%"></div>
