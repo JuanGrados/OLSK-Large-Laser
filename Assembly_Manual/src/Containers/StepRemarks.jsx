@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect } from 'react'
 import { ModelContext } from '/Components/ModelContext.jsx';
 import axios from 'axios';
-//import { LuAlertCircle } from "react-icons/lu";
+import { LuCircleAlert } from "react-icons/lu";
 
 
 let counter = 1;
@@ -34,7 +34,7 @@ axios.get('https://sheets.googleapis.com/v4/spreadsheets/1uVPhX1BG4BVODoJ8GnZFB_
 
 export default function StepRemarks() {
 
-    let { stepCount } = useContext(ModelContext)
+    let { stepCount, stepList } = useContext(ModelContext)
 
     useEffect(() => {
 
@@ -55,7 +55,7 @@ export default function StepRemarks() {
     return <>
         {stepRemarks ? <div>
             <div id='RemarksTitle' style={{ margin: 'auto', display: 'inline', alignContent: 'baseline' }} >
-                <h3> Remarks</h3> <br />
+                <h3> <LuCircleAlert /> Remarks</h3> <br />
             </div>
             <ul>
                 {stepRemarks.map((name, index) => <li key={index}> {name}</li>)}

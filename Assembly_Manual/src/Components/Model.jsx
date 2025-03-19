@@ -83,10 +83,15 @@ export default function Model({ modelIn, modelOut, modelInCopy, modelInCopy2, mo
     const material = new THREE.ShaderMaterial(ConditionalEdgesShader); //for conditional lines
     material.uniforms.diffuse.value.set(0x000000);
 
-    //Fabulaser Mini V3 - steps grouping
+    //OLSK Large Laser V3 - steps grouping
     const exceptionArray = [ //shown alone
-        //"18_Prepare_X_main_plate"
+        "011_Glue_-_Top_Panel",
+        "012_Glue_-_Bottom_&_Front_Panel",
+        "013_Glue_-_Separator_&_Side_Panels",
+        "014_Glue_-_Back_Panels_&_Head_Plates",
+        "015_Glue_Parts_-_Window"
     ]
+
     const preparingStepArray = [ //shown grouped
         [
             "03_Prepare_Bottom_Middle_Beam"
@@ -109,25 +114,29 @@ export default function Model({ modelIn, modelOut, modelInCopy, modelInCopy2, mo
             "172_Prepare_Back_Electronic_Plate_2"
         ],
         [
+            "221_Prepare_Y_Axis_1",
             "222_Prepare_Y_Axis_2"
         ],
         [
             "25_Prepare_Back_Inner_Panel"
         ],
         [
-            "291_Prepare_X_axis_-_Linear_Guide",
-            "292_Prepare_X_axis_2_-_X_Head_Plate",
-            "293_Prepare_X_axis_3_-_Belt_Attacher",
-            "294_Prepare_X_axis_4_-_X_Carriage",
-            "295_Prepare_X_axis_5"
+            "291_Prepare_Y_Left_Attacher",
+            "292_Attach_Belt_Tensioner"
         ],
         [
-            "30_Prepare_X_Motor_Plate"
+            "311_Prepare_X_axis_-_Linear_Guide"
         ],
         [
-            "311_Prepare_Y_Left_Attacher",
-            "312_Attach_Belt_Tensioner"
+            "312_Prepare_X_axis_2_-_X_Head_Plate",
+            "313_Prepare_X_axis_3_-_Belt_Attacher",
+            "314_Prepare_X_axis_4_-_X_Carriage",
+            "315_Prepare_X_axis_5"
         ],
+        [
+            "32_Prepare_X_Motor_Plate"
+        ],
+
         [
             "42_Prepare_Top_Panel"
         ],
@@ -140,10 +149,22 @@ export default function Model({ modelIn, modelOut, modelInCopy, modelInCopy2, mo
             "451_Prepare_Diode_Head",
             "452_Fix_the_Diode_Modules",
             "453_Fix_the_Pin_Holder"
+        ],
+        [
+            "52_Attach_Display",
+            "53_Install_Cameras",
+            "54_Frame",
+            "55_Pistons_and_HInges"
         ]
     ]
     const wiringStepArray = [ //add schematic,
-        "47_Wiring"
+        "471_Wiring_1",
+        "472_Wiring_2",
+        "473_Wiring_3",
+        "474_Wiring_4",
+        "475_Wiring_5",
+        "476_Wiring_6",
+        "477_Wiring_7"
     ]
 
     const mainMachineBuildArray = []
@@ -445,8 +466,8 @@ export default function Model({ modelIn, modelOut, modelInCopy, modelInCopy2, mo
                 if (stepName[n] === subPrepArray[m]) { //if the current step is the same as in the subPrepArray, retrieves the model and adds to the preparringTemArray
                     let previousStepsModel = modelAux.getObjectByName(`${stepName[n]}`, true)
                     preparingTempArray.push(previousStepsModel)
-                    if (stepName[n + 1] === "20_Attach_X_ball_screw_on_X_main_plate") {
-                        let exceptionPreparingStepModel = modelAux.getObjectByName("18_Prepare_X_main_plate", true)
+                    if (stepName[n + 1] === "314_Prepare_X_axis_4_-_X_Carriage") {
+                        let exceptionPreparingStepModel = modelAux.getObjectByName("311_Prepare_X_axis_-_Linear_Guide", true)
                         preparingTempArray.push(exceptionPreparingStepModel)
                     }
                     if (stepName[n + 1] === "27_Fix_Z_ball_screw_on_Z_front_plate") {
@@ -523,7 +544,7 @@ export default function Model({ modelIn, modelOut, modelInCopy, modelInCopy2, mo
         //         let clonedObj = obj.clone();
         //         groupVisibleObj.add(clonedObj)
         //     });
-        mainMachineBuildArray.filter(obj => !excludeArray.some(arr => arr.includes(obj.name)))
+        mainMachineBuildArray.filter(obj => !exceptionArray.some(arr => arr.includes(obj.name)) && !excludeArray.some(arr => arr.includes(obj.name)))
             .forEach(obj => {
                 obj.visible = true;
                 let clonedObj = obj.clone();
